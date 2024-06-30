@@ -1,0 +1,60 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
+      xmlns:h="http://xmlns.jcp.org/jsf/html"
+      xmlns:f="http://xmlns.jcp.org/jsf/core">
+
+    <ui:composition template="/template.xhtml">
+        <ui:define name="title">
+            <h:outputText value="Edit this CO2 emission's data"></h:outputText>
+        </ui:define>
+        <ui:define name="note">
+            <h:outputText value="Note: To edit the CO2 emission's data you must be authorized" />
+        </ui:define>
+        <ui:define name="body">
+            <h:panelGroup id="messagePanel" layout="block">
+                <h:messages errorStyle="color: red" infoStyle="color: green" layout="table"/>
+            </h:panelGroup>
+            <h:form>
+                <h:panelGrid columns="2">
+                    <h:outputLabel value="#{bundle.EditCo2EmissionsLabel_seriesName}" for="seriesName" />
+                    <h:inputText id="seriesName" value="#{co2EmissionsController.selected.seriesName}" title="#{bundle.EditCo2EmissionsTitle_seriesName}" />
+                    <h:outputLabel value="#{bundle.EditCo2EmissionsLabel_seriesCode}" for="seriesCode" />
+                    <h:inputText id="seriesCode" value="#{co2EmissionsController.selected.seriesCode}" title="#{bundle.EditCo2EmissionsTitle_seriesCode}" />
+                    <h:outputLabel value="#{bundle.EditCo2EmissionsLabel_countryName}" for="countryName" />
+                    <h:inputText id="countryName" value="#{co2EmissionsController.selected.countryName}" title="#{bundle.EditCo2EmissionsTitle_countryName}" />
+                    <h:outputLabel value="#{bundle.EditCo2EmissionsLabel_countryCode}" for="countryCode" />
+                    <h:inputText id="countryCode" value="#{co2EmissionsController.selected.countryCode}" title="#{bundle.EditCo2EmissionsTitle_countryCode}" />
+                    <h:outputLabel value="#{bundle.EditCo2EmissionsLabel_yr2018}" for="yr2018" />
+                    <h:inputText id="yr2018" value="#{co2EmissionsController.selected.yr2018}" title="#{bundle.EditCo2EmissionsTitle_yr2018}" />
+                    <h:outputLabel value="#{bundle.EditCo2EmissionsLabel_yr2019}" for="yr2019" />
+                    <h:inputText id="yr2019" value="#{co2EmissionsController.selected.yr2019}" title="#{bundle.EditCo2EmissionsTitle_yr2019}" />
+                    <h:outputLabel value="#{bundle.EditCo2EmissionsLabel_yr2020}" for="yr2020" />
+                    <h:inputText id="yr2020" value="#{co2EmissionsController.selected.yr2020}" title="#{bundle.EditCo2EmissionsTitle_yr2020}" />
+                    <h:outputLabel value="#{bundle.EditCo2EmissionsLabel_yr2021}" for="yr2021" />
+                    <h:inputText id="yr2021" value="#{co2EmissionsController.selected.yr2021}" title="#{bundle.EditCo2EmissionsTitle_yr2021}" />
+                    <h:outputLabel value="#{bundle.EditCo2EmissionsLabel_yr2022}" for="yr2022" />
+                    <h:inputText id="yr2022" value="#{co2EmissionsController.selected.yr2022}" title="#{bundle.EditCo2EmissionsTitle_yr2022}" />
+                    <h:outputLabel value="#{bundle.EditCo2EmissionsLabel_yr2023}" for="yr2023" />
+                    <h:inputText id="yr2023" value="#{co2EmissionsController.selected.yr2023}" title="#{bundle.EditCo2EmissionsTitle_yr2023}" />
+                    <h:outputLabel value="#{bundle.EditCo2EmissionsLabel_id}" for="id" />
+                    <h:inputText id="id" value="#{co2EmissionsController.selected.id}" title="#{bundle.EditCo2EmissionsTitle_id}" required="true" requiredMessage="#{bundle.EditCo2EmissionsRequiredMessage_id}"/>
+                    <h:outputLabel value="#{bundle.EditCo2EmissionsLabel_author}" for="author" />
+                    <h:inputText id="author" value="#{co2EmissionsController.selected.author}" title="#{bundle.EditCo2EmissionsTitle_author}" />
+                    <h:outputLabel value="#{bundle.EditCo2EmissionsLabel_userId}" for="userId" />
+                    <h:selectOneMenu id="userId" value="#{co2EmissionsController.selected.userId}" title="#{bundle.EditCo2EmissionsTitle_userId}" >
+                        <f:selectItems value="#{registerUserController.itemsAvailableSelectOne}"/>
+                    </h:selectOneMenu>
+                    <h:outputLabel value="Admin Password" for="adminPassword" />
+                    <h:inputSecret id="adminPassword" value="#{co2EmissionsController.adminPassword}" required="true" requiredMessage="Admin password is required"/>
+                </h:panelGrid>
+                <h:commandLink class="link" action="#{co2EmissionsController.update}" value="#{bundle.EditCo2EmissionsSaveLink}"/>
+                <h:link class="link" outcome="View" value="View detail about"/>
+                <h:commandLink class="link" action="#{co2EmissionsController.prepareList}" value="Go back to Admin page" immediate="true"/>
+               <h:link class="link" outcome="/index" value="Go back to Welcome Page" />
+            </h:form>
+        </ui:define>
+    </ui:composition>
+
+</html>

@@ -1,0 +1,61 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
+      xmlns:h="http://xmlns.jcp.org/jsf/html"
+      xmlns:f="http://xmlns.jcp.org/jsf/core">
+
+    <ui:composition template="/template.xhtml">
+        <ui:define name="title">
+            <h:outputText value="Enter your data and sign in" />
+        </ui:define>
+        <ui:define name="note">
+             <h:outputText value="Note: In case An error occurred attempting to roll back the transaction, please check that the identifier ID, password, and Email are not already used." />
+        </ui:define>
+        <ui:define name="body">
+            <h:panelGroup id="messagePanel" layout="block" style="margin-bottom: 10px;">
+                <h:messages errorStyle="color: red" infoStyle="color: green" layout="table" />
+            </h:panelGroup>
+            <h:form>
+                <h:panelGrid columns="1" style="margin: 0 auto; width: 600px; border-spacing: 10px; text-align: left;">
+                    <h:panelGrid columns="3" style="margin: 0 auto; border-spacing: 15px;">
+                        <h:outputLabel value="ID" for="id" />
+                        <h:inputText id="id" value="#{registerUserController.selected.id}" title="ID" required="true" requiredMessage="ID is required" />
+                        <h:message for="id" style="color: red" />
+                    </h:panelGrid>
+                        <h:panelGrid columns="3" style="margin: 0 auto; border-spacing: 15px;">
+                        <h:outputLabel value="First Name" for="firstname" />
+                        <h:inputText id="firstname" value="#{registerUserController.selected.firstname}" title="First Name" required="true" requiredMessage="First name is required" />
+                        <h:message for="firstname" style="color: red" />
+                    </h:panelGrid>
+                    <h:panelGrid columns="3" style="margin: 0 auto; border-spacing: 15px;">
+                        <h:outputLabel value="Last Name" for="lastname" />
+                        <h:inputText id="lastname" value="#{registerUserController.selected.lastname}" title="Last Name" required="true" requiredMessage="Last name is required" />
+                        <h:message for="lastname" style="color: red" />
+                    </h:panelGrid>
+                    <h:panelGrid columns="3" style="margin: 0 auto; border-spacing: 15px;">
+                        <h:outputLabel value="Email" for="email" />
+                        <h:inputText id="email" value="#{registerUserController.selected.email}" title="Email" required="true" requiredMessage="Email is required" validatorMessage="Email should be valid">
+                            <f:validateRegex pattern="^[A-Za-z0-9+_.-]+@[A-Za-z0-9.-]+$" />
+                        </h:inputText>
+                        <h:message for="email" style="color: red" />
+                    </h:panelGrid>
+                        <h:panelGrid columns="3" style="margin: 0 auto; border-spacing: 15px;">
+                        <h:outputLabel value="Password" for="password" />
+                        <h:inputText id="password" value="#{registerUserController.selected.password}" title="Password" required="true" requiredMessage="Password is required" validatorMessage="Password must be at least 6 characters long and have minimal 1 number">
+                            <f:validateRegex pattern="^(?=.*\d).{6,}$" />
+                        </h:inputText>
+                        <h:message for="password" style="color: red" />
+                    </h:panelGrid>
+                </h:panelGrid>
+                <br />
+                <h:panelGrid columns="1" style="text-align: center;">
+                    <h:commandButton action="#{registerUserController.create}" value="Sign in" />
+                    <br />
+                    <h:link  class="link" outcome="/index" value="Go back to Welcome page" />
+                </h:panelGrid>
+            </h:form>
+        </ui:define>
+    </ui:composition>
+</html>
+

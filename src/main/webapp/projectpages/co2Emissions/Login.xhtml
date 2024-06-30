@@ -1,0 +1,40 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
+      xmlns:h="http://xmlns.jcp.org/jsf/html"
+      xmlns:f="http://xmlns.jcp.org/jsf/core">
+
+    <ui:composition template="/template.xhtml">
+        <ui:define name="title">
+            <h:outputText value="Login to access the Admin page" />
+        </ui:define>
+        <ui:define name="note">
+            <h:outputText value=" Note: To login, you must be registered as a scientist. if you are not already registered, return to the welcome page and register." />
+        </ui:define>
+        <ui:define name="body">
+             <h:form>
+                <h:panelGrid columns="1" style="margin: 0 auto; width: 600px; border-spacing: 10px; text-align: left;">
+                    <h:panelGrid columns="3" style="margin: 0 auto; border-spacing: 15px;">
+                        <h:outputLabel value="Email" for="email" />
+                        <h:inputText id="email" value="#{loginController.email}" required="true" requiredMessage="Email is required" />
+                        <h:message for="email" style="color: red" />
+                    </h:panelGrid>
+                    <h:panelGrid columns="3" style="margin: 0 auto; border-spacing: 15px;">
+                        <h:outputLabel value="Password" for="password" />
+                        <h:inputSecret id="password" value="#{loginController.password}" required="true" requiredMessage="Password is required" />
+                        <h:message for="password" style="color: red" />
+                    </h:panelGrid>
+                </h:panelGrid>
+                <br />
+            <h:commandButton value="Login" action="#{loginController.login}" style="display: block; margin: 0 auto;" />
+            <br />
+            <h:link class="link" outcome="/index" value="Go back to Welcome page" />
+        </h:form>
+        <h:messages globalOnly="true" style="color: red; text-align: center;" />
+        </ui:define>
+    </ui:composition>
+</html>
+
+
+
